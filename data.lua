@@ -2,7 +2,7 @@ local item = {
   type = "selection-tool",
   name = "power-grid-comb",
   subgroup = "tool",
-  order = "z",
+  order = "z[power-grid-comb]",
   icons = {
     {
       icon = "__power-grid-comb__/graphics/icons/power-grid-comb.png",

@@ -39,7 +39,7 @@ local function on_player_selected_area(event)
         if target then
           newinfo.newpole.connect_neighbour({
             wire = connection.wire,
-            target_entity = newinfo.surface.find_entity(connection.target_name, connection.target_position),
+            target_entity = target,
             source_circuit_id = connection.source_circuit_id,
             target_circuit_id = connection.target_circuit_id,
           })
