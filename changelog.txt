@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.2
+Date: 5. 4. 2018
+  Bugfixes:
+    - Track reconnection targets that get destroyed by unit number instead of using find_entity()
+---------------------------------------------------------------------------------------------------
 Version: 0.16.1
 Date: 5. 4. 2018
   Bugfixes:
