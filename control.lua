@@ -16,6 +16,7 @@ local function on_player_selected_area(event)
             wire = connection.wire,
             source_circuit_id = connection.source_circuit_id,
             target_circuit_id = connection.target_circuit_id,
+            target_entity = connection.target_entity,
             target_position = connection.target_entity.position,
             target_name = connection.target_entity.name,
           }
@@ -35,7 +36,12 @@ local function on_player_selected_area(event)
     end
     for i, newinfo in pairs(create) do
       for k, connection in pairs(newinfo.connections) do
-        local target = newinfo.surface.find_entity(connection.target_name, connection.target_position)
+        local target
+        if connection.target_entity.valid then
+          target = connection.target_entity
+        else
+          target = newinfo.surface.find_entity(connection.target_name, connection.target_position)
+        end
         if target then
           newinfo.newpole.connect_neighbour({
             wire = connection.wire,
