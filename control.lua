@@ -1,5 +1,7 @@
+
 local function on_player_selected_area(event)
   if event.item == "power-grid-comb" then
+    local distances = {}
     local create = {}
     for k, entity in pairs(event.entities) do
       if entity.type == "electric-pole" then
@@ -21,36 +23,46 @@ local function on_player_selected_area(event)
             target_entity = connection.target_entity,
           }
         end
-        table.insert(create, info)
+        local max_wire_distance = entity.prototype.max_wire_distance
+        if create[max_wire_distance] == nil then
+          create[max_wire_distance] = {}
+          table.insert(distances, max_wire_distance)
+        end
+        table.insert(create[max_wire_distance], info)
         entity.destroy()
       end
     end
+    table.sort(distances)
     local old_new_map = {}
-    for k, newinfo in pairs(create) do
-      local newpole = newinfo.surface.create_entity({
-        name = newinfo.name,
-        position = newinfo.position,
-        force = newinfo.force,
-      })
-      newpole.health = newinfo.health
-      create[k].newpole = newpole
-      old_new_map[newinfo.unit_number] = newpole
+    for _, distance in ipairs(distances) do
+      for k, newinfo in pairs(create[distance]) do
+        local newpole = newinfo.surface.create_entity({
+          name = newinfo.name,
+          position = newinfo.position,
+          force = newinfo.force,
+        })
+        newpole.health = newinfo.health
+        create[distance][k].newpole = newpole
+        old_new_map[newinfo.unit_number] = newpole
+      end
     end
-    for i, newinfo in pairs(create) do
-      for k, connection in pairs(newinfo.connections) do
-        local target
-        if connection.target_entity.valid then
-          target = connection.target_entity
-        else
-          target = old_new_map[connection.target_unit_number]
-        end
-        if target then
-          newinfo.newpole.connect_neighbour({
-            wire = connection.wire,
-            target_entity = target,
-            source_circuit_id = connection.source_circuit_id,
-            target_circuit_id = connection.target_circuit_id,
-          })
+    for _, distance in ipairs(distances) do
+      for _, newinfo in pairs(create[distance]) do
+        for k, connection in pairs(newinfo.connections) do
+          local target
+          if connection.target_entity.valid then
+            target = connection.target_entity
+          else
+            target = old_new_map[connection.target_unit_number]
+          end
+          if target then
+            newinfo.newpole.connect_neighbour({
+              wire = connection.wire,
+              target_entity = target,
+              source_circuit_id = connection.source_circuit_id,
+              target_circuit_id = connection.target_circuit_id,
+            })
+          end
         end
       end
     end

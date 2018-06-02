@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.4
+Date: 2. 6. 2018
+  Changes:
+    - Poles are reconstructed in the same order as before but sorted by shortest wire reach first, to create clean grids more reliably with mixed pole types
+---------------------------------------------------------------------------------------------------
 Version: 0.16.3
 Date: 3. 5. 2018
   Info:
