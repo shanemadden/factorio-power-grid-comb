@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.16.5
+Date: 29. 12. 2018
+  Changes:
+    - Added shift-selection mode that will only connect to poles directly north/south/east/west of selected poles
+---------------------------------------------------------------------------------------------------
 Version: 0.16.4
 Date: 2. 6. 2018
   Changes:

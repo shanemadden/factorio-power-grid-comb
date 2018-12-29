@@ -13,7 +13,7 @@ local item = {
   stack_size = 1,
   stackable = false,
   selection_color = { r = 0.72, g = 0.45, b = 0.2, a = 1 },
-  alt_selection_color = { r = 0.72, g = 0.45, b = 0.2, a = 1 },
+  alt_selection_color = { r = 0.72, g = 0.22, b = 0.1, a = 1 },
   selection_mode = { "buildable-type", "matches-force" },
   alt_selection_mode = { "buildable-type", "matches-force" },
   selection_cursor_box_type = "entity",
