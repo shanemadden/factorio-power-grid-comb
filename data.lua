@@ -3,13 +3,14 @@ local item = {
   name = "power-grid-comb",
   subgroup = "tool",
   order = "z[power-grid-comb]",
+  show_in_library = true,
   icons = {
     {
       icon = "__power-grid-comb__/graphics/icons/power-grid-comb.png",
       icon_size = 32,
     }
   },
-  flags = {},
+  flags = {"only-in-cursor"},
   stack_size = 1,
   stackable = false,
   selection_color = { r = 0.72, g = 0.45, b = 0.2, a = 1 },
@@ -18,18 +19,42 @@ local item = {
   alt_selection_mode = { "buildable-type", "same-force" },
   selection_cursor_box_type = "entity",
   alt_selection_cursor_box_type = "entity",
-  --can_be_mod_opened = true,
 }
 
-local recipe = {
-  type = "recipe",
-  name = "power-grid-comb",
-  enabled = true,
-  ingredients = {
-    {'electronic-circuit', 20},
-    {'copper-cable', 50},
+local shortcut = {
+  type = "shortcut",
+  name = "shortcut-power-grid-comb-item",
+  action = "create-blueprint-item",
+  item_to_create = "power-grid-comb",
+  order = "m[power-grid-comb]",
+  --style = "yellow",
+  icon = {
+    filename = "__power-grid-comb__/graphics/icons/power-grid-comb-x32.png",
+    flags = {
+      "icon"
+    },
+    priority = "extra-high-no-scale",
+    scale = 1,
+    size = 32
   },
-  result = "power-grid-comb",
+  small_icon = {
+    filename = "__power-grid-comb__/graphics/icons/power-grid-comb-x24.png",
+    flags = {
+      "icon"
+    },
+    priority = "extra-high-no-scale",
+    scale = 1,
+    size = 24
+  },
+  disabled_small_icon = {
+    filename = "__power-grid-comb__/graphics/icons/power-grid-comb-x24-white.png",
+    flags = {
+      "icon"
+    },
+    priority = "extra-high-no-scale",
+    scale = 1,
+    size = 24
+  },
 }
 
-data:extend{item, recipe}
+data:extend{item, shortcut}
