@@ -1,12 +1,12 @@
 {
     "name": "power-grid-comb",
-    "version": "0.17.3",
+    "version": "0.18.0",
     "title": "Power Grid Comb",
     "author": "Shane Madden",
     "homepage": "https://github.com/shanemadden/factorio-power-grid-comb",
-    "factorio_version": "0.17",
+    "factorio_version": "0.18",
     "dependencies": [
-        "base >= 0.17"
+        "base >= 0.18"
     ],
     "description": "Provides a tool to remove and instantly replace electricity infrastructure in an area, cosmetically cleaning up any inconsistent power cable due to out-of-order building, while leaving circuit wiring alone."
 }
