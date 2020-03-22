@@ -4,7 +4,7 @@ local function on_player_selected_area(event)
     local distances = {}
     local create = {}
     for k, entity in pairs(event.entities) do
-      if entity.type == "electric-pole" then
+      if entity.type == "electric-pole" and entity.name ~= "ret-pole-wire" then
         local info = {
           surface = entity.surface,
           name = entity.name,
