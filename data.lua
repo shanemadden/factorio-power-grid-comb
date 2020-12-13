@@ -10,7 +10,7 @@ local item = {
       icon_size = 32,
     }
   },
-  flags = {"only-in-cursor"},
+  flags = {"only-in-cursor", "spawnable"},
   stack_size = 1,
   stackable = false,
   selection_color = { r = 0.72, g = 0.45, b = 0.2, a = 1 },
@@ -24,8 +24,8 @@ local item = {
 local shortcut = {
   type = "shortcut",
   name = "shortcut-power-grid-comb-item",
-  action = "create-blueprint-item",
-  item_to_create = "power-grid-comb",
+  action = "spawn-item",
+  item_to_spawn = "power-grid-comb",
   order = "m[power-grid-comb]",
   --style = "yellow",
   icon = {
