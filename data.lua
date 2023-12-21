@@ -19,6 +19,8 @@ local item = {
   alt_selection_mode = { "buildable-type", "same-force" },
   selection_cursor_box_type = "entity",
   alt_selection_cursor_box_type = "entity",
+  entity_type_filters = {"electric-pole"},
+  alt_entity_type_filters = {"electric-pole"},
 }
 
 local shortcut = {
