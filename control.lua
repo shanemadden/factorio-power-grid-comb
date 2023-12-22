@@ -71,38 +71,53 @@ script.on_event(defines.events.on_player_selected_area, on_player_selected_area)
 
 local function on_player_alt_selected_area(event)
   if event.item ~= "power-grid-comb" then return end
-  local x_axis, x_arr, x_arr_len = {}, {}, 0
-  local y_axis, y_arr, y_arr_len = {}, {}, 0
+  local unit_numbers = {}
+  local x_axis = {}
+  local y_axis = {}
   for _, entity in pairs(event.entities) do
     if entity.name == "ret-pole-wire" then goto continue end
+
+    unit_numbers[entity.unit_number] = true
+    local to_reconnect = {}
+    local len = 0
+    for _, connection in pairs(entity.neighbours.copper) do
+      if not unit_numbers[connection.unit_number] then
+        len = len + 1
+        to_reconnect[len] = connection
+      end
+    end
     entity.disconnect_neighbour()
+    for _, connection in pairs(to_reconnect) do
+      entity.connect_neighbour(connection)
+    end
+
     local position = entity.position
     local x, y = position.x, position.y
 
     local x_entities = x_axis[x] or {}
     x_axis[x] = x_entities
     x_entities[#x_entities+1] = entity
-    x_arr_len = x_arr_len + 1
-    x_arr[x_arr_len] = x
 
     local y_entities = y_axis[y] or {}
     y_axis[y] = y_entities
-    y_arr_len = y_arr_len + 1
     y_entities[#y_entities+1] = entity
-    y_arr[y_arr_len] = y
 
     ::continue::
   end
 
-  for _, x in ipairs(x_arr) do
-    local entities = x_axis[x]
+  for _, entities in pairs(x_axis) do
+    table.sort(entities, function(a, b)
+      return a.position.y < b.position.y
+    end)
     for i = 2, #entities do
       entities[i].connect_neighbour(entities[i-1])
     end
   end
 
-  for _, y in ipairs(y_arr) do
-    local entities = y_axis[y]
+  for _, entities in pairs(y_axis) do
+    table.sort(entities, function(a, b)
+      return a.position.x < b.position.x
+    end)
     for i = 2, #entities do
       entities[i].connect_neighbour(entities[i-1])
     end
