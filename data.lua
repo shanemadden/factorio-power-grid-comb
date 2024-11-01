@@ -27,8 +27,7 @@ local item = {
     mode = { "nothing" },
     cursor_box_type = "entity",
     entity_type_filters = { "electric-pole" },
-  }
-
+  },
 }
 
 local shortcut = {
