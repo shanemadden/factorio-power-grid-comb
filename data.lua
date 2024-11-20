@@ -23,8 +23,8 @@ local item = {
   },
 
   alt_select = {
-    border_color = { 0, 0, 0, 0 },
-    mode = { "nothing" },
+    border_color = { r = 0.72, g = 0.45, b = 0.2, a = 1 },
+    mode = { "buildable-type", "same-force" },
     cursor_box_type = "entity",
     entity_type_filters = { "electric-pole" },
   },
