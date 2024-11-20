@@ -5,6 +5,6 @@
   "author": "Shane Madden",
   "homepage": "https://github.com/shanemadden/factorio-power-grid-comb",
   "factorio_version": "2.0",
-  "dependencies": ["base >= 2.0"],
-  "description": "Provides a tool to remove any non-straight lines in electricity infrastructure in an area, cosmetically cleaning up any inconsistent power cable, while leaving circuit wiring alone."
+  "dependencies": ["base >= 2.0", "flib"],
+  "description": "Clean up inconsistent power cabling while leaving circuit wiring alone."
 }

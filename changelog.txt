@@ -1,12 +1,16 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.0
-Date: 1. 11. 2024
+Date: 20. 11. 2024
+  Features:
+    - Will no longer connect two electric grids that were previously not connected
+    - Selection will now prioritize horizontal and vertical connections, where this is not possible the smallest possible connection will be made
   Changes:
-    - Update for 2.0 @AckEmma
-    - normal select mode has been removed
-    - alt-select mode (straight line) is now the default
+    - Update to Factorio 2.0 API
   Optimizations:
-    - Improved performance of the tool - thanks @CodeGreen
+    - Selection tool will now only select electric poles
+    - Improved algorithm for horiztonal and vertical matches
+  Info:
+    - Updated by @AckEmma, Optimizations by @CodeGreen
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 13. 12. 2020
