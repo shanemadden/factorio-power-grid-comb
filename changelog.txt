@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.0
-Date: 20. 11. 2024
+Date: 25. 02. 2025
   Features:
     - Will no longer connect two electric grids that were previously not connected
     - Selection will now prioritize horizontal and vertical connections, where this is not possible the smallest possible connection will be made
