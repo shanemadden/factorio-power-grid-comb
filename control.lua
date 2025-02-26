@@ -117,11 +117,14 @@ local function on_selected_area(event, alt_mode)
           if other.entity.valid and network_ids[entity.unit_number] == network_ids[other.entity.unit_number] then
             local dst = other.entity.get_wire_connector(defines.wire_connector_id.pole_copper, true)
             if src.network_id ~= dst.network_id then
-              src.connect_to(dst)
               -- only connect to the first closest
               -- there is no limit on # of connections, only one connection is needed
               -- if none are found then the pole will remain disconnected
-              goto next
+              local r = src.connect_to(dst)
+              -- if a valid connection was made we can move on
+              if r then
+                goto next
+              end
             end
           end
         end
